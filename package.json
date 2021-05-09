@@ -1,21 +1,27 @@
 {
-  "name": "vueplugin",
+  "name": "th-bricks",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "linlei",
+  "main": "dist/th-bricks.umd.js",
+  "module": "dist/th-bricks.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "build": "npm run clean && npm run build:esm && npm run build:umd",
+    "build:esm": "rollup --config ./build/rollup.esm.config.js",
+    "build:umd": "rollup --config ./build/rollup.umd.config.js",
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "lodash-es": "^4.17.21"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.2.1",
     "@types/jest": "^24.0.19",
+    "@types/lodash-es": "^4.17.4",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -29,7 +35,14 @@
     "@vue/test-utils": "^2.0.0-0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "typescript": "~4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.45.2",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
+    "tslib": "^2.2.0",
+    "typescript": "^4.1.5",
+    "vue": "^3.0.0",
     "vue-jest": "^5.0.0-0"
   }
 }
